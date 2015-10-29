@@ -6,7 +6,7 @@ from DataBaseTool import ModelInfo, DataBaseTool, ModelImage
 import uuid
 
 
-def get_data():
+def get_data(start=1, end=10):
     spider = Spider("http://mm.taobao.com/json/request_top_list.htm")
     list_pattern = '<div class="list-item".*?pic-word.*?<a href="(.*?)".*?<img src="(.*?)".*?<a class="lady-name.*?>(.*?)</a>.*?<strong>(.*?)</strong>.*?<span>(.*?)</span>'
     # introduce_pattern = '<div class="mm-aixiu-content".*?>(.*?)<!--'
@@ -18,7 +18,7 @@ def get_data():
     db.create_db()
     session = db.get_session()
     try:
-        for page in range(10)[1:10]:
+        for page in range(end)[start:end]:
             page_str = '?page=' + str(page)
             list_contents = spider.getList(page_str, list_pattern)
             for lc in list_contents:

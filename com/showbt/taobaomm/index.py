@@ -1,3 +1,5 @@
+from com.showbt.tool.TaobaoMM import get_data
+
 __author__ = 'www.showbt.com'
 
 # -*- encoding: UTF-8 -*-
@@ -57,3 +59,15 @@ def detail_img(id=None):
     session = db.get_session()
     query = session.query(ModelImage).filter(ModelImage.miid == id)
     return render_template("detail_img.html", images=query)
+
+@app.route('/getdata')
+def init_data():
+    start = request.args.get('start', 1)
+    end = request.args.get('end', 10)
+    get_data(start, end)
+    return '完成采集'
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run(host='0.0.0.0', port=8080)
+
