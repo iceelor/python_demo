@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this is first page</title>
+    <link rel="stylesheet" href="../static/index.css" />
+</head>
+<body>
+<div><h1>陶妹妹</h1></div>
+<ul class="index_list">
+    <li class="id">id</li>
+    <li class="name">name</li>
+    <li class="toppic">topPic</li>
+    <li class="age">age</li>
+    <li class="local">local</li>
+    <li class="operate">operate</li>
+    {%for item in name%}
+    <li class="id">{{item.id}}</li>
+    <li class="name"><a href="{{item.url}}" target="_blank"> {{item.name}} </a></li>
+    <li class="toppic"><img src="{{item.topPic}}"></li>
+    <li class="age">{{item.age}}</li>
+    <li class="local">{{item.local}}</li>
+    <li class="operate"><a href="/taomm/{{item.id}}" target="_blank">detail</a></li>
+    {%endfor%}
+    <div class="page"><a href="taomm?page={{page-1}}">上一页</a> <a href="taomm?page={{page+1}}">下一页</a></div>
+</ul>
+</body>
+</html>

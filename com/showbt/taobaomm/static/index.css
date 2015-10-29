@@ -1,0 +1,63 @@
+body {
+    margin: 0 auto !important;
+}
+
+div, ul {
+    width: 918px;
+    margin: 10px auto;
+    padding-left: 0;
+    overflow: auto;
+}
+h1 {line-height: 40px;text-align: center;}
+
+li {
+    float: left;
+    display: block;
+    background-color: aliceblue;
+    overflow: hidden;
+    margin: 1px;
+    padding: 3px;
+    min-width: 50px;
+    min-height: 65px;
+    text-align: center;
+    height: 4em;
+    line-height: 4em;
+    overflow: hidden;
+}
+
+.index_list {
+    background-color: silver;
+    border: solid 1px seagreen;
+    min-height: 600px;
+    height: auto;
+}
+
+.id {
+    width: 350px;
+}
+
+.name {
+    width: 150px;
+}
+
+.toppic {
+    width: 100px;
+}
+
+.age {
+    width: 50px;
+}
+
+.local {
+    width: 150px;
+}
+
+.operate {
+    width: 70px;
+    clear: right;
+    float: right;
+}
+
+.page {
+
+}

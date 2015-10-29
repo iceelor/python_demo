@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>image detail page</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul {
+            width: 1000px;
+            background-color: silver;
+            border: solid 1px seagreen;
+            margin: 10px auto;
+            padding-left: 0;
+            overflow: auto;
+            min-height: 600px;
+            height: auto;
+        }
+
+        li {
+            float: left;
+            display: block;
+            background-color: aliceblue;
+            margin: 1px;
+            padding-top: 3px;
+            min-height: 65px;
+            max-width: 498px;
+            height: auto;
+            overflow: auto;
+        }
+        img{max-width: 498px}
+    </style>
+<script language="JavaScript">
+    function viewBigImg(url){
+        window.open(url,"_blank");
+    }
+</script>
+</head>
+<body>
+<ul>
+{%for img in images%}
+    <li><img src="{{img.imgurl}}" title="点击查看大图" onclick="viewBigImg(this.src)"/></li>
+{%endfor%}
+</ul>
+</body>
+</html>
