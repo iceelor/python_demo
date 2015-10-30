@@ -1,9 +1,10 @@
 __author__ = 'www.showbt.com'
 # -*- coding:utf-8 -*-
 
-from com.showbt.tool.Spider import Spider
-from DataBaseTool import ModelInfo, DataBaseTool, ModelImage
 import uuid
+
+import Spider
+from DataBaseTool import ModelInfo, DataBaseTool, ModelImage
 
 
 def get_data(start=1, end=10):

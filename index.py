@@ -1,11 +1,12 @@
-from com.showbt.tool.TaobaoMM import get_data
+from TaobaoMM import get_data
 
 __author__ = 'www.showbt.com'
 
 # -*- encoding: UTF-8 -*-
 
 from sqlalchemy import func
-from com.showbt.tool.DataBaseTool import DataBaseTool, ModelInfo, ModelImage
+from DataBaseTool import ModelInfo, ModelImage
+import DataBaseTool
 from flask import Flask, request, render_template, redirect, url_for
 from werkzeug import secure_filename
 
@@ -65,7 +66,7 @@ def init_data():
     start = request.args.get('start', 1)
     end = request.args.get('end', 10)
     get_data(start, end)
-    return '完成采集'
+    return 'finish'
 
 if __name__ == '__main__':
     app.debug = True
