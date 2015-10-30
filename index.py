@@ -1,3 +1,6 @@
+import os
+from werkzeug.utils import secure_filename
+from DataBaseTool import DataBaseTool, ModelInfo, ModelImage
 from TaobaoMM import get_data
 
 __author__ = 'www.showbt.com'
@@ -5,12 +8,10 @@ __author__ = 'www.showbt.com'
 # -*- encoding: UTF-8 -*-
 
 from sqlalchemy import func
-from DataBaseTool import ModelInfo, ModelImage
-import DataBaseTool
 from flask import Flask, request, render_template, redirect, url_for
-from werkzeug import secure_filename
 
-app = Flask(__name__)
+tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+app = Flask(__name__, template_folder=tmpl_dir)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -65,7 +66,7 @@ def detail_img(id=None):
 def init_data():
     start = request.args.get('start', 1)
     end = request.args.get('end', 10)
-    get_data(start, end)
+    get_data(int(start), int(end))
     return 'finish'
 
 if __name__ == '__main__':

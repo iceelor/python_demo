@@ -3,7 +3,7 @@ __author__ = 'www.showbt.com'
 
 import uuid
 
-import Spider
+from Spider import Spider
 from DataBaseTool import ModelInfo, DataBaseTool, ModelImage
 
 
@@ -49,4 +49,4 @@ def test_save_img():
     spider.saveImage(img, 'xxx/')
 
 # get_data()
-test_save_img()
+# test_save_img()
