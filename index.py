@@ -1,3 +1,4 @@
+import json
 import os
 from werkzeug.utils import secure_filename
 from DataBaseTool import DataBaseTool, ModelInfo, ModelImage
@@ -12,6 +13,7 @@ from flask import Flask, request, render_template, redirect, url_for
 
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 app = Flask(__name__, template_folder=tmpl_dir)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -40,6 +42,12 @@ def index_html():
         query = session.query(ModelInfo).offset((current_page - 1) * page_size).limit(page_size)
     finally:
         db.close_session(session)
+    t = request.args.get('type')
+    if t == 'json':
+        ja = []
+        for mi in query:
+            ja.append(mi.to_json())
+        return json.dumps(ja)
     return render_template("index.html", name=query, page=current_page)
 
 
@@ -62,6 +70,7 @@ def detail_img(id=None):
     query = session.query(ModelImage).filter(ModelImage.miid == id)
     return render_template("detail_img.html", images=query)
 
+
 @app.route('/getdata')
 def init_data():
     start = request.args.get('start', 1)
@@ -69,7 +78,7 @@ def init_data():
     get_data(int(start), int(end))
     return 'finish'
 
+
 if __name__ == '__main__':
     app.debug = True
     app.run()
-

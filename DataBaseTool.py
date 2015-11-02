@@ -1,3 +1,5 @@
+import json
+
 __author__ = 'www.showbt.com'
 
 # -*- coding:utf-8 -*-
@@ -20,6 +22,11 @@ class ModelInfo(Base):
     url = Column(String(100))
     local = Column(String(50))
 
+    def to_json(self):
+        dict = {"id": self.id, "name": self.name, "info": self.info, "topPic": self.topPic, "age": self.age,
+                "url": self.url, "local": self.local}
+        return dict
+
 
 class ModelImage(Base):
     __tablename__ = 'tb_model_img'
@@ -28,6 +35,10 @@ class ModelImage(Base):
     imgurl = Column(String(400))
     # , ForeignKey('tb_model_info.id', ondelete='CASCADE', onupdate='CASCADE')
     miid = Column(String(36))
+
+    def to_json(self):
+        dict = {"id": self.id, "imgurl": self.imgurl, "miid":self.miid}
+        return dict
 
 
 class DataBaseTool(object):
